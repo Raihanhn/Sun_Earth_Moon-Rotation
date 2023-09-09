@@ -2,26 +2,91 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  margin: 0;
+  padding: 0;
+  background: url(./components/img/bg.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: url("https://i.gifer.com/CYW.gif");
+  background-size: cover;
+
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5), 0 0 30px rgba(255, 0, 0, 0.5),
+    0 0 45px rgba(255, 0, 0, 0.5), 0 0 60px rgba(255, 0, 0, 0.5),
+    0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.earth {
+  position: absolute;
+  top: calc(50% - 1px);
+  left: 50%;
+  width: 160px;
+  height: 2px;
+  transform-origin: left;
+  animation: rotate 15s linear infinite;
+}
+
+.earth::before {
+  content: url(./components/img/genuineEarth.png);
+  position: absolute;
+  top: -25px;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 15px rgba(0, 155, 255, 0.5), 0 0 30px rgb(0, 155, 255, 0.5),
+    0 0 45px rgb(0, 155, 255, 0.5), 0 0 60px rgb(0, 155, 255, 0.5),
+    0 0 15px rgb(0, 155, 255, 0.5);
+  animation: rotate 10s linear infinite;
+}
+
+.moon {
+  position: absolute;
+  right: 25px;
+  width: 60px;
+  height: 1px;
+  transform-origin: right;
+  animation: rotate 2s linear infinite;
+}
+
+.moon::before {
+  content: url(./components/img/moon.png);
+  position: absolute;
+  top: -10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
